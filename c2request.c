@@ -1,9 +1,14 @@
+#include "c2request.h"
 #include <curl/curl.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "c2request.h"
+
+struct string {
+    char* ptr;
+    size_t len;
+};
 
 void init_string(struct string* s)
 {
@@ -60,7 +65,7 @@ char* request_post(char* url, char* data)
     return s.ptr;
 }
 
-char* request_get(char url[])
+char* request_get(char* url)
 {
     CURL* curl = curl_easy_init();
     struct string s;
