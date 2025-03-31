@@ -13,6 +13,7 @@ set(SRCS
 	c2json.h
 	c2request.c
 	c2request.h
+	c2types.c
 	c2types.h
 )
 

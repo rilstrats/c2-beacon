@@ -55,8 +55,10 @@ struct Command* _parse_command(cJSON* json_command)
     struct Command* command = malloc(sizeof(struct Command));
     command->id = _parse_int(json_command, "id");
     command->beacon_id = _parse_int(json_command, "beacon_id");
-    command->type = _parse_string(json_command, "type");
+    command->type = parse_command_type(_parse_string(json_command, "type"));
     command->arg = _parse_string(json_command, "arg");
+    command->executed = 0;
+    command->result = NULL;
 
     return command;
 }
@@ -123,7 +125,7 @@ cJSON* _unparse_command(struct Command* command)
 
     cJSON_AddNumberToObject(json_command, "id", command->id);
     cJSON_AddNumberToObject(json_command, "beacon_id", command->beacon_id);
-    cJSON_AddStringToObject(json_command, "type", command->type);
+    cJSON_AddStringToObject(json_command, "type", unparse_command_type(command->type));
     cJSON_AddStringToObject(json_command, "arg", command->arg);
 
     return json_command;
