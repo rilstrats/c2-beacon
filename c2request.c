@@ -58,7 +58,7 @@ char* request_post(char* url, char* data)
             exit(EXIT_FAILURE);
         }
 
-        printf("%s\n", s.ptr);
+        /*printf("%s\n", s.ptr);*/
 
         curl_easy_cleanup(curl);
     }
@@ -86,7 +86,7 @@ char* request_get(char* url)
             exit(EXIT_FAILURE);
         }
 
-        printf("%s\n", s.ptr);
+        /*printf("%s\n", s.ptr);*/
 
         curl_easy_cleanup(curl);
     }

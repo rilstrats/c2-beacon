@@ -127,6 +127,10 @@ cJSON* _unparse_command(struct Command* command)
     cJSON_AddNumberToObject(json_command, "beacon_id", command->beacon_id);
     cJSON_AddStringToObject(json_command, "type", unparse_command_type(command->type));
     cJSON_AddStringToObject(json_command, "arg", command->arg);
+    cJSON_AddBoolToObject(json_command, "executed", command->executed);
+    if (command->result != NULL) {
+        cJSON_AddStringToObject(json_command, "result", command->result);
+    }
 
     return json_command;
 }
